@@ -24,6 +24,31 @@ inputs:
 runs:
   using: composite
   steps:
+  
+    - name: Validate inputs
+      shell: sh
+      run: |
+        set -euo pipefail
+
+        if [ -n "${{ inputs.scope }}" ]; then
+          case "${{ inputs.scope }}" in
+            existing_users|contributors_only|collaborators_only)
+              ;; # valid
+            *)
+              echo "::error::Invalid scope: '${{ inputs.scope }}'. Must be 'existing_users', 'contributors_only', or 'collaborators_only'."
+              exit 1
+              ;;
+          esac
+        fi
+
+        case "${{ inputs.target }}" in
+          repository|organization|user)
+            ;; # valid
+          *)
+            echo "::error::Invalid target: '${{ inputs.target }}'. Must be 'repository', 'organization', or 'user'."
+            exit 1
+            ;;
+        esac
 
     - name: Determine API endpoint
       shell: sh
@@ -39,10 +64,6 @@ runs:
             ;;
           user)
             API_URL="users/${{ github.repository_owner }}/interaction-limits"
-            ;;
-          *)
-            echo "::error::Invalid target: ${{ inputs.target }}. Must be 'repository', 'organization', or 'user'."
-            exit 1
             ;;
         esac
 
