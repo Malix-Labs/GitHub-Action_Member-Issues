@@ -8,7 +8,7 @@ You can apply these limits to a repository, an organization, or a user account
 
 ### Personal Access Token
 
-To consume this Action you will need a GitHub Fine-Grained Personal Access Token (PAT) with the right permission
+To consume this Action you need a GitHub Fine-Grained Personal Access Token (PAT) with the right permission
 
 1. If you use an `"organization"` scope, first you want to disable the expiry of your organization's Personal Access Tokens
 	1. Navigate to [your organization's settings](https://github.com/organizations/<ORGANIZATION_NAME>/settings) → [Personal Access Tokens Settings](https://github.com/organizations/<ORGANIZATION_NAME>/settings/personal-access-tokens) → Fine-grained tokens → Set maximum lifetimes for personal access tokens
@@ -19,7 +19,7 @@ To consume this Action you will need a GitHub Fine-Grained Personal Access Token
 5. Select the proper "Resource Owner"
 6. Set the expiration to : "No expiration"
 7. Select the proper "Repository Access" (at least the ones in which this action is used)
-8. About "Permissions", if your `scope` will be :
+8. About "Permissions", if your `scope` is :
 	- **`"repository"`** : ![Repository](docs/images/repository.png)
 	- **`"organization"`** : ![Organization](docs/images/organization.png)
 	- **`"user"`** : ![User](docs/images/user.png)
