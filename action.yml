@@ -6,7 +6,7 @@ branding:
 inputs:
   token:
     description: |
-      Description: A GitHub token with the required permissions
+      Description: A GitHub Personal Access Token (PAT) with the required permission ("Administration" (read + write) for Organization or Repository, "Interaction limits" (read + write) for User)
       Type: string
     required: true
   scope:
@@ -17,8 +17,8 @@ inputs:
     required: false
   target:
     description: |
-      Description: The target of the interaction limits. Owner means the organization or the user, depending on where this action is used.
-      Type: "repository" | "owner"
+      Description: The target of the interaction limits.
+      Type: "repository" | "user" | "organization"
     required: false
     default: "repository"
 runs:
