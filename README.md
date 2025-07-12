@@ -14,8 +14,8 @@ To consume this Action you will need a GitHub Fine-Grained Personal Access Token
 	1. Navigate to [your organization's settings](https://github.com/organizations/<ORGANIZATION_NAME>/settings) → [Personal Access Tokens Settings](https://github.com/organizations/<ORGANIZATION_NAME>/settings/personal-access-tokens) → Fine-grained tokens → Set maximum lifetimes for personal access tokens
 	2. Disable "Fine-grained personal access tokens must expire"
 2. Navigate to [your Fine-Grained Personal Access Tokens](https://github.com/settings/personal-access-tokens) → [Generate new token](https://github.com/settings/personal-access-tokens/new)
-3. Fill "name". _**Suggestion**: `GitHub-Action_Permanent-Interaction-Limits`_
-4. _**Optional**: You can fill "description" with: `https://github.com/marketplace/actions/permanent-interaction-limits#pre-requisites` for reference_
+3. Fill "name". _**Suggestion**: "`GitHub-Action_Permanent-Interaction-Limits`"_
+4. _**Optional**: You can fill "description" with: "`https://github.com/marketplace/actions/permanent-interaction-limits#pre-requisites`" for reference_
 5. Select the proper "Resource Owner"
 6. Set the expiration to : "No expiration"
 7. Select the proper "Repository Access" (at least the ones in which this action is used)
