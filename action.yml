@@ -29,24 +29,23 @@ runs:
       shell: sh
       run: |
         set -euo pipefail
-        
-        if [ "${{ inputs.target }}" = 'repository' ]; then
-          API_URL="repos/${{ github.repository }}/interaction-limits"
-        else
-          OWNER_TYPE="$(gh api "users/${{ github.repository_owner }}" --jq .type)"
-          case "${OWNER_TYPE}" in
-            Organization)
-              API_URL="orgs/${{ github.repository_owner }}/interaction-limits"
-              ;;
-            User)
-              API_URL="users/${{ github.repository_owner }}/interaction-limits"
-              ;;
-            *)
-              echo "::error::Unknown or unexpected owner type: ${OWNER_TYPE}"
-              exit 1
-              ;;
-          esac
-        fi
+
+        case "${{ inputs.target }}" in
+          repository)
+            API_URL="repos/${{ github.repository }}/interaction-limits"
+            ;;
+          organization)
+            API_URL="orgs/${{ github.repository_owner }}/interaction-limits"
+            ;;
+          user)
+            API_URL="users/${{ github.repository_owner }}/interaction-limits"
+            ;;
+          *)
+            echo "::error::Invalid target: ${{ inputs.target }}. Must be 'repository', 'organization', or 'user'."
+            exit 1
+            ;;
+        esac
+
         echo "API_URL=${API_URL}" >> "${GITHUB_ENV}"
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
