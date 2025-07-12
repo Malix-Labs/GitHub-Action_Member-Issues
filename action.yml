@@ -18,7 +18,7 @@ inputs:
   target:
     description: |
       Description: The target of the interaction limits.
-      Type: "repository" | "user" | "organization"
+      Type: "repository" | "organization" | "user"
     required: false
     default: "repository"
 runs:
