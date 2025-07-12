@@ -49,7 +49,7 @@ runs:
         fi
         echo "API_URL=${API_URL}" >> "${GITHUB_ENV}"
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ inputs.token }}
 
     - name: Determine interaction limit
       shell: sh
@@ -63,7 +63,7 @@ runs:
         fi
         echo "LIMIT_TO_SET=${LIMIT_TO_SET}" >> "${GITHUB_ENV}"
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ inputs.token }}
 
     - name: Apply interaction limit
       shell: sh
@@ -75,4 +75,4 @@ runs:
           --field "limit=${{ env.LIMIT_TO_SET }}" \
           --field "expiry=six_months"
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ inputs.token }}
