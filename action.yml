@@ -25,17 +25,24 @@ runs:
       run: |
         set -euo pipefail
         
-        if [ "${{ inputs.target }}" = "owner" ]; then
-          OWNER_TYPE=$(gh api "users/${{ github.repository_owner }}" --jq .type)
-          if [ "${OWNER_TYPE}" = "Organization" ]; then
-            API_URL="orgs/${{ github.repository_owner }}/interaction-limits"
-          else
-            API_URL="users/${{ github.repository_owner }}/interaction-limits"
-          fi
-        else
+        if [ "${{ inputs.target }}" = 'repository' ]; then
           API_URL="repos/${{ github.repository }}/interaction-limits"
+        else
+          OWNER_TYPE="$(gh api "users/${{ github.repository_owner }}" --jq .type)"
+          case "${OWNER_TYPE}" in
+            Organization)
+              API_URL="orgs/${{ github.repository_owner }}/interaction-limits"
+              ;;
+            User)
+              API_URL="users/${{ github.repository_owner }}/interaction-limits"
+              ;;
+            *)
+              echo "::error::Unknown or unexpected owner type: ${OWNER_TYPE}"
+              exit 1
+              ;;
+          esac
         fi
-        echo "API_URL=${API_URL}" >> $GITHUB_ENV
+        echo "API_URL=${API_URL}" >> "${GITHUB_ENV}"
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
@@ -49,7 +56,7 @@ runs:
         else
           LIMIT_TO_SET="$(gh api "${{ env.API_URL }}" --jq .limit)"
         fi
-        echo "LIMIT_TO_SET=${LIMIT_TO_SET}" >> $GITHUB_ENV
+        echo "LIMIT_TO_SET=${LIMIT_TO_SET}" >> "${GITHUB_ENV}"
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
