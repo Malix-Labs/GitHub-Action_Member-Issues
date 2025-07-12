@@ -4,6 +4,11 @@ branding:
   icon: slash
   color: red
 inputs:
+  token:
+    description: |
+      Description: A GitHub token with the required permissions
+      Type: string
+    required: true
   scope:
     description: |
       Description: The scope of the interaction limits
