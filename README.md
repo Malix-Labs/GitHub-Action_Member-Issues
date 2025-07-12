@@ -20,9 +20,9 @@ To consume this Action you will need a GitHub Fine-Grained Personal Access Token
 6. Set the expiration to : "No expiration"
 7. Select the proper "Repository Access" (select at least the repositories in which you use this action))
 8. About "Permissions", if your `scope` will be :
-   - **`"repository"`** : ![Repository](docs/images/2.png)
-   - **`"organization"`** : ![Organization](docs/images/3.png)
-   - **`"user"`** : ![User](docs/images/1.png)
+   - **`"repository"`** : ![Repository](docs/images/repository.png)
+   - **`"organization"`** : ![Organization](docs/images/organization.png)
+   - **`"user"`** : ![User](docs/images/user.png)
 9. Copy the generated token and add it as a secret in your repo/org (e.g. `PERMA_LIMIT_PAT`).
 
 ## Usage
