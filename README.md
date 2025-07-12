@@ -18,7 +18,7 @@ To consume this Action you will need a GitHub Fine-Grained Personal Access Token
 4. _**Optional**: You can fill "description" with: `https://github.com/marketplace/actions/permanent-interaction-limits#pre-requisites` for reference_
 5. Select the proper "Resource Owner"
 6. Set the expiration to : "No expiration"
-7. Select the proper "Repository Access" (select at least the repositories in which you use this action))
+7. Select the proper "Repository Access" (at least the ones in which this action is used)
 8. About "Permissions", if your `scope` will be :
 	- **`"repository"`** : ![Repository](docs/images/repository.png)
 	- **`"organization"`** : ![Organization](docs/images/organization.png)
